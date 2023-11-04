@@ -150,6 +150,11 @@
     }
 }
 
+
+.addImageGrid{
+    padding: 50px;
+}
+
 @media (max-width:600px) {
     .imgGrid{
         grid-template-columns: repeat(3,1fr);

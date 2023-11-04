@@ -1,7 +1,7 @@
 import React from 'react'
 import { CiImageOn } from 'react-icons/ci'
 
-const ImageGrid = ({ targetId, data, gridRef, deleteImage }) => {
+const ImageGrid = ({ targetId, data, gridRef, deleteImage, handleTargetId }) => {
     return (
         <div className='imgGrid' ref={gridRef}>
             {
