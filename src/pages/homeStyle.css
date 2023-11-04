@@ -1,0 +1,176 @@
+.imgContainer{
+    margin: 50px 50px 50px 50px;
+    filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1)) drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
+    background-color: #fff;
+    border-radius: 12px;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    border-bottom: 1px solid #ccc;
+}
+
+.deleteFileButton{
+    color: rgb(224, 46, 46);
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.deleteFileButtonHidden{
+    display: none;
+}
+.deleteFileButtonShow{
+    display: block;
+}
+
+
+
+
+.imgGrid{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    gap: 30px;
+    padding: 50px 50px;
+    transition: all 0.3s ease-in-out;
+}
+
+.testClass{
+    transition: all 0.3s ease-in-out;
+}
+
+.imgDiv{
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 7px -10px 123px -63px rgba(0,0,0,0.2);
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    transition: all 0.5s ease;
+
+}
+
+.deleted {
+    opacity: 0;
+  }
+
+  .imgDivNotSelected .checkBox{
+    position: absolute;
+    top:30px;
+    left: 30px;
+    color: #fff;
+    transform : scale(2);
+    display: none;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.imgDivNotSelected .overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: none;
+}
+
+
+.imgDivSelected .checkBox{
+    position: absolute;
+    top:30px;
+    left: 30px;
+    color: #fff;
+    transform : scale(2);
+    z-index: 2;
+    cursor: pointer;
+}
+
+.imgDivSelected .overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+.imgDivNotSelected:hover .checkBox{
+    display: block;
+}
+
+.imgDivNotSelected:hover .overlay{
+    display: block;
+}
+
+
+
+.imgDiv:first-child{
+    grid-column: span 2 / span 2;
+    grid-row: span 2 / span 2;
+
+}
+
+.imgDiv img{
+    width: 100%;
+    height: 100%;
+}
+
+.addImageGrid{
+    border: 1px dashed #ccc ;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 7px -10px 123px -63px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    cursor: pointer;
+}
+
+
+@media (max-width: 768px){
+    .imgContainer{
+    margin: 25px 25px 25px 25px;
+
+    }
+
+    .header{
+        padding: 20px 25px;
+    }
+
+    .imgGrid{
+        grid-template-columns: repeat(4,1fr);
+    padding: 30px 25px;
+
+    }
+}
+
+@media (max-width:600px) {
+    .imgGrid{
+        grid-template-columns: repeat(3,1fr);
+    padding: 30px 25px;
+
+    }
+
+}
+
+@media (max-width:480px) {
+    .imgGrid{
+        grid-template-columns: repeat(1,1fr);
+    padding: 30px 25px;
+
+    }
+    .imgDiv:first-child{
+        grid-column: span 1 / span 1;
+        grid-row: span 1 / span 1;
+    }
+
+    .addImageGrid{
+        padding: 50px;
+    }
+}
