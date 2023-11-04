@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import './homeStyle.css'
-import { CiImageOn } from 'react-icons/ci'
 import Sortable from 'sortablejs'
+import Header from '../components/Header'
+import ImageGrid from '../components/ImageGrid'
 
 
 
@@ -108,29 +109,8 @@ const Home = () => {
 
     return (
         <div className='imgContainer'>
-            <div className='header'>
-                <h4>{targetId.length} Files Selected</h4>
-                <span className={`deleteFileButton ${targetId.length > 0 ? 'deleteFileButtonShow' : 'deleteFileButtonHidden'}`} onClick={handleDelete}>Delete Files</span>
-            </div>
-
-            <div className='imgGrid' ref={gridRef}>
-                {
-                    data?.map(({ id, image }) => <div
-                        className={`imgDiv ${targetId.includes(id) ? 'imgDivSelected' : 'imgDivNotSelected'} ${targetId.includes(id) && deleteImage ? 'deleted ' : ''} `}
-                        key={id}
-                        data-id={id}
-                    >
-                        <input className='checkBox' type="checkbox" onClick={() => handleTargetId(id)} />
-                        <img src={image} alt="img" />
-                        <div className='overlay'></div>
-                    </div>
-                    )
-                }
-                <div className='addImageGrid'>
-                    <CiImageOn size={24} />
-                    <span>Add Image</span>
-                </div>
-            </div>
+            <Header targetId={targetId} handleDelete={handleDelete} />
+            <ImageGrid targetId={targetId} data={data} deleteImage={deleteImage} gridRef={gridRef} />
         </div >
     )
 }
