@@ -8,6 +8,7 @@ const ImageGrid = ({ targetId, data, gridRef, deleteImage, handleTargetId }) => 
                 data?.map(({ id, image }) => <div
                     className={`imgDiv ${targetId.includes(id) ? 'imgDivSelected' : 'imgDivNotSelected'} ${targetId.includes(id) && deleteImage ? 'deleted ' : ''} `}
                     key={id}
+                    // data-id custom attribute to all of the items in the grid layout
                     data-id={id}
                 >
                     <input className='checkBox' type="checkbox" onClick={() => handleTargetId(id)} />

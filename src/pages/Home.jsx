@@ -56,8 +56,8 @@ const Home = () => {
 
     const gridRef = useRef(null)
     const sortableJsRef = useRef(null)
-
-    const onListChange = () => {
+    // handle the drag and drop
+    const handleDragandDrop = () => {
         const newData = [...gridRef.current.children]
             .map((i) => {
                 const dataId = +i.getAttribute('data-id');
@@ -73,6 +73,7 @@ const Home = () => {
         setData([...newData]);
     };
 
+    // when click the check button add id to the array of targetId adn also check same id exist or not. If exist then remove it from array. 
     const handleTargetId = (id) => {
         const existTargetId = targetId.includes(id)
         if (existTargetId) {
@@ -83,6 +84,7 @@ const Home = () => {
         }
     }
 
+    // delete all the match id from the image data.
     const handleDelete = () => {
         setDeleteImage(!deleteImage)
         const deleteTargetData = data.filter(dataId => !targetId.includes(dataId.id))
@@ -90,17 +92,17 @@ const Home = () => {
         setTargetId([])
         setDeleteImage(!deleteImage)
     }
-
+    //  useEffect use to initiate SortableJs
     useEffect(() => {
         sortableJsRef.current = new Sortable(gridRef.current, {
             animation: 150,
-            onEnd: onListChange,
             onStart: (event) => {
                 const id = event.item.getAttribute('data-id');
                 dragImage.current = +id;
             },
+            onEnd: handleDragandDrop,
             onSort: () => {
-                onListChange();
+                handleDragandDrop();
             },
         });
 
